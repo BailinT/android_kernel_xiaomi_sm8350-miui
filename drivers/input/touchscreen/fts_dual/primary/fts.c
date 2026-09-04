@@ -7527,9 +7527,9 @@ out:
 	return retval;
 }
 
-static const struct file_operations fts_selftest_ops = {
-	.read = fts_selftest_read,
-	.write = fts_selftest_write,
+static const struct proc_ops fts_selftest_ops = {
+	.proc_read = fts_selftest_read,
+	.proc_write = fts_selftest_write,
 };
 
 static void *fts_datadump_seq_start(struct seq_file *m, loff_t *pos)
@@ -7636,12 +7636,11 @@ out:
 	return cnt1 + cnt2 + cnt3;
 }
 */
-static const struct file_operations fts_datadump_ops = {
-	.owner = THIS_MODULE,
-	.open = fts_datadump_open,
-	.read = seq_read,
-	.llseek = seq_lseek,
-	.release = seq_release,
+static const struct proc_ops fts_datadump_ops = {
+	.proc_open = fts_datadump_open,
+	.proc_read = seq_read,
+	.proc_lseek = seq_lseek,
+	.proc_release = seq_release,
 };
 
 static int32_t fts_pure_raw_seq_show(struct seq_file *m, void *v)
@@ -7673,12 +7672,11 @@ static int fts_pure_raw_open(struct inode *inode, struct file *file)
 	return seq_open(file, &fts_pure_raw_seq_ops);
 };
 
-static const struct file_operations fts_pure_raw_ops = {
-	.owner = THIS_MODULE,
-	.open = fts_pure_raw_open,
-	.read = seq_read,
-	.llseek = seq_lseek,
-	.release = seq_release,
+static const struct proc_ops fts_pure_raw_ops = {
+	.proc_open = fts_pure_raw_open,
+	.proc_read = seq_read,
+	.proc_lseek = seq_lseek,
+	.proc_release = seq_release,
 };
 
 #define TP_INFO_MAX_LENGTH 50
@@ -7703,8 +7701,8 @@ static ssize_t fts_fw_version_read(struct file *file, char __user *buf,
 		return cnt;
 }
 
-static const struct file_operations fts_fw_version_ops = {
-	.read = fts_fw_version_read,
+static const struct proc_ops fts_fw_version_ops = {
+	.proc_read = fts_fw_version_read,
 };
 
 static ssize_t fts_lockdown_info_read(struct file *file, char __user *buf,
@@ -7738,8 +7736,8 @@ out:
 		return cnt;
 }
 
-static const struct file_operations fts_lockdown_info_ops = {
-	.read = fts_lockdown_info_read,
+static const struct proc_ops fts_lockdown_info_ops = {
+	.proc_read = fts_lockdown_info_read,
 };
 
 #ifdef CONFIG_PM
