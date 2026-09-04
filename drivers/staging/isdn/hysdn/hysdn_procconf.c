@@ -336,14 +336,12 @@ hysdn_conf_close(struct inode *ino, struct file *filep)
 /******************************************************/
 /* table for conf filesystem functions defined above. */
 /******************************************************/
-static const struct file_operations conf_fops =
-{
-	.owner		= THIS_MODULE,
-	.llseek         = no_llseek,
-	.read           = hysdn_conf_read,
-	.write          = hysdn_conf_write,
-	.open           = hysdn_conf_open,
-	.release        = hysdn_conf_close,
+static const struct proc_ops conf_fops = {
+	.proc_lseek = no_llseek,
+	.proc_read = hysdn_conf_read,
+	.proc_write = hysdn_conf_write,
+	.proc_open = hysdn_conf_open,
+	.proc_release = hysdn_conf_close,
 };
 
 /*****************************/
