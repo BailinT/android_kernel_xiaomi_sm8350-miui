@@ -5389,8 +5389,8 @@ static ssize_t tp_irq_debug_write(struct file *file, const char __user *buf,
 
 }
 
-static const struct file_operations tp_irq_debug_ops = {
-	.write = tp_irq_debug_write,
+static const struct proc_ops tp_irq_debug_ops = {
+	.proc_write = tp_irq_debug_write,
 };
 
 #ifdef SYNAPTICS_DEBUGFS_ENABLE
@@ -5576,8 +5576,8 @@ static ssize_t syna_tcm_fw_version_read(struct file *file, char __user *buf,
 		return cnt;
 }
 
-static const struct file_operations syna_tcm_fw_version_ops = {
-	.read = syna_tcm_fw_version_read,
+static const struct proc_ops syna_tcm_fw_version_ops = {
+	.proc_read = syna_tcm_fw_version_read,
 };
 
 static ssize_t syna_tcm_lockdown_info_read(struct file *file, char __user *buf,
@@ -5624,8 +5624,8 @@ out:
 		return cnt;
 }
 
-static const struct file_operations syna_tcm_lockdown_info_ops = {
-	.read = syna_tcm_lockdown_info_read,
+static const struct proc_ops syna_tcm_lockdown_info_ops = {
+	.proc_read = syna_tcm_lockdown_info_read,
 };
 
 static int sum_size;
@@ -5715,8 +5715,8 @@ err_out:
 	return ret;
 }
 
-static const struct file_operations syna_tcm_datadump_ops = {
-	.read = syna_tcm_datadump_read,
+static const struct proc_ops syna_tcm_datadump_ops = {
+	.proc_read = syna_tcm_datadump_read,
 };
 
 static ssize_t syna_tcm_selftest_read(struct file *file, char __user *buf,
@@ -5802,9 +5802,9 @@ out:
 	return retval;
 }
 
-static const struct file_operations syna_tcm_selftest_ops = {
-	.read = syna_tcm_selftest_read,
-	.write = syna_tcm_selftest_write,
+static const struct proc_ops syna_tcm_selftest_ops = {
+	.proc_read = syna_tcm_selftest_read,
+	.proc_write = syna_tcm_selftest_write,
 };
 
 static u8 syna_tcm_panel_vendor_read(void)
