@@ -212,9 +212,9 @@ static const struct proc_ops athdiag_fops = {
 	.proc_write = ath_procfs_diag_write,
 };
 #else
-static const struct file_operations athdiag_fops = {
-	.read = ath_procfs_diag_read,
-	.write = ath_procfs_diag_write,
+static const struct proc_ops athdiag_fops = {
+	.proc_read = ath_procfs_diag_read,
+	.proc_write = ath_procfs_diag_write,
 };
 #endif
 
