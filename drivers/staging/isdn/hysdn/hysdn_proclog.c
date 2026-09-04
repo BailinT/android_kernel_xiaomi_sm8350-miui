@@ -302,15 +302,13 @@ hysdn_log_poll(struct file *file, poll_table *wait)
 /**************************************************/
 /* table for log filesystem functions defined above. */
 /**************************************************/
-static const struct file_operations log_fops =
-{
-	.owner		= THIS_MODULE,
-	.llseek         = no_llseek,
-	.read           = hysdn_log_read,
-	.write          = hysdn_log_write,
-	.poll           = hysdn_log_poll,
-	.open           = hysdn_log_open,
-	.release        = hysdn_log_close,
+static const struct proc_ops log_fops = {
+	.proc_lseek = no_llseek,
+	.proc_read = hysdn_log_read,
+	.proc_write = hysdn_log_write,
+	.proc_poll = hysdn_log_poll,
+	.proc_open = hysdn_log_open,
+	.proc_release = hysdn_log_close,
 };
 
 
