@@ -83,10 +83,10 @@ static const struct proc_ops pktlog_fops = {
 	.proc_read = pktlog_read,
 };
 #else
-static struct file_operations pktlog_fops = {
-	open:  pktlog_open,
-	release:pktlog_release,
-	read : pktlog_read,
+static const struct proc_ops pktlog_fops = {
+	.proc_open = pktlog_open,
+	.proc_release = pktlog_release,
+	.proc_read = pktlog_read,
 };
 #endif
 
