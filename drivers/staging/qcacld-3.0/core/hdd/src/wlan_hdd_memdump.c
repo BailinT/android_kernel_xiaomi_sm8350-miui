@@ -212,8 +212,8 @@ static const struct proc_ops driver_dump_fops = {
 	.proc_read = hdd_driver_memdump_read,
 };
 #else
-static const struct file_operations driver_dump_fops = {
-	.read = hdd_driver_memdump_read,
+static const struct proc_ops driver_dump_fops = {
+	.proc_read = hdd_driver_memdump_read,
 };
 #endif
 
