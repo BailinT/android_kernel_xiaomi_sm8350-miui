@@ -2764,10 +2764,10 @@ static int cs35l45_hibernate(struct cs35l45_private *cs35l45, bool hiber_en)
 	if (hiber_en == cs35l45->hibernate_mode)
 		return 0;
 
-		if (!cs35l45->dsp.booted) {
-			dev_err(cs35l45->dev, "Firmware not loaded\n");
-			return -EPERM;
-		}
+	if (!cs35l45->dsp.booted) {
+		dev_err(cs35l45->dev, "Firmware not loaded\n");
+		return -EPERM;
+	}
 
 	if (hiber_en == HIBER_MODE_EN) {
 		regmap_read(cs35l45->regmap, CS35L45_DSP_MBOX_2, &sts);
